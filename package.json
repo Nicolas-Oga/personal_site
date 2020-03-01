@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --config ./webpack.config.js",
-    "build": "COMMENTS_API_URL=http://68.183.24.104:4000 ./node_modules/webpack/bin/webpack.js -m production",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/webpack/bin/webpack.js -m production",
     "lint": "eslint src --ext .jsx --fix"
   },
   "author": "",

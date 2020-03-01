@@ -2,6 +2,12 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const ENVIRONMENT_VARS = [
+  'COMMENTS_API_URL',
+  'GOOGLE_API_KEY',
+  'GOOGLE_CLIENT_ID'
+]
+
 const htmlPlugin = filename =>
   new HtmlWebpackPlugin({
     filename,
@@ -15,7 +21,7 @@ module.exports = {
   plugins: [
     htmlPlugin('index.html'),
     htmlPlugin('404.html'), // little trick to make SPA mode work in GitHub pages
-    new webpack.EnvironmentPlugin(['COMMENTS_API_URL'])
+    new webpack.EnvironmentPlugin(ENVIRONMENT_VARS)
   ],
   module: {
     rules: [
