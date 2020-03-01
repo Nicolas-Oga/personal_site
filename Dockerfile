@@ -7,4 +7,5 @@ RUN yarn install
 
 ADD . $WORKDIR
 
+
 CMD yarn build
