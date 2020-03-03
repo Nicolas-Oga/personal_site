@@ -29,7 +29,7 @@ const initGapiClient = async _ => {
   return gapi.load('client:auth2', _ =>
     gapi.client.init({
       apiKey: process.env.GOOGLE_API_KEY,
-      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientId: process.env.GOOGLE_OAUTH_KEY,
       scope: 'https://www.googleapis.com/auth/userinfo.profile'
     })
   )

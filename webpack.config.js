@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ENVIRONMENT_VARS = [
   'COMMENTS_API_URL',
   'GOOGLE_API_KEY',
-  'GOOGLE_CLIENT_ID'
+  'GOOGLE_OAUTH_KEY'
 ]
 
 const htmlPlugin = filename =>

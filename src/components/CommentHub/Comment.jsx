@@ -90,7 +90,7 @@ const Comment = ({ id, body, createdAt, userId, userName, userAvatarUrl }) => {
         <Typography variant='body1' component='span'>{body}</Typography>
       </MainContainer>
 
-      {parseInt(userId) === parseInt(currentUser.id) && (
+      {currentUser && parseInt(userId) === parseInt(currentUser.id) && (
         <Actions>
           <Button startIcon={<DeleteForeverIcon />} onClick={deleteComment}>Delete</Button>
         </Actions>
