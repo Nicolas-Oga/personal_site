@@ -1,8 +1,8 @@
-FROM node:12.16.1-alpine3.11
+FROM node:lts
 
 WORKDIR /personal_site
 
-ADD package.json yarn.lock
+ADD package.json yarn.lock ./
 RUN yarn install --force
 
 ADD . $WORKDIR
