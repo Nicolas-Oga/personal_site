@@ -34,10 +34,10 @@ const FlexSpacer = styled.span`
 const Footer = _props => {
   return (
     <Root>
-      <a href="http://creativecommons.org/licenses/by-nc/4.0/" target='_blank' rel='license noopener noreferrer'>
+      <a href='http://creativecommons.org/licenses/by-nc/4.0/' target='_blank' rel='license noopener noreferrer'>
         <img
-          alt="Licencia Creative Commons"
-          src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"
+          alt='Licencia Creative Commons'
+          src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png'
         />
       </a>
       <FlexSpacer />
@@ -45,7 +45,7 @@ const Footer = _props => {
         Contact
       </Button>
       <Button
-        href='https://github.com/nicooga/nicooga.github.com'
+        href='https://github.com/Nicolas-Oga/personal_site'
         target='_blank'
         rel='noopeener noreferrer'
         endIcon={<GitHubIcon />}
