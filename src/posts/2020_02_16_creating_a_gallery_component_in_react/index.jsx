@@ -9,6 +9,8 @@ import Gallery from '../../components/Gallery'
 import Figure from '../../components/Figure'
 import CodeSandboxIframe from '../../components/CodeSandboxIframe'
 
+import cover from './cover.png'
+
 import dice from './dice.jpg'
 import bycicle from './bycicle.jpg'
 import toyCar from './toy-car.jpg'
@@ -348,13 +350,14 @@ const Post = _props => {
 const post = {
   // Here "1" stands for February. Initially I put "2", but I was seeing March when displaying the date.
   // Took me some time to understand what was happening. This is why I love-hate JS.
+  cover,
   date: new Date(2020, 1, 16),
   plainTextTitle: 'Creating a gallery component with react and styled-components',
   title: <>Creating a gallery component with react and <nobr>styled-components</nobr></>,
   description: 'Step by step guide',
   component: Post,
   slug: 'creating-a-gallery-component-with-react',
-  tags: ['react', 'software']
+  tags: ['react', 'software'],
 }
 
 export default post

@@ -38,6 +38,28 @@ const FlexSpacer = styled.div`
   flex-grow: 1;
 `
 
+const structuredData = post => JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `https://nicolasoga.com.ar/posts/${post.slug}`
+  },
+  headline: post.title,
+  image: post.cover,
+  datePublished: post.date,
+  dateModified: post.date,
+  author: {
+    '@type': 'Person',
+    name: 'Nicolas Oga'
+  },
+  publisher: {
+    '@type': 'Person',
+    name: 'Nicolas Oga'
+  },
+  description: post.description
+})
+
 const PostViewer = ({ match }) => {
   const post = posts.find(p => p.slug === match.params.slug)
   const Component = post.component
@@ -58,6 +80,9 @@ const PostViewer = ({ match }) => {
     <PostSectionTitle>Comments</PostSectionTitle>
 
     <CommentHub postSlug={post.slug} />
+    <script type="application/ld+json">
+      {structuredData(post)}
+    </script>
   </div>
 }
 
