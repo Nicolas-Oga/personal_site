@@ -2,11 +2,12 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const ENVIRONMENT_VARS = [
-  'COMMENTS_API_URL',
-  'GOOGLE_API_KEY',
-  'GOOGLE_OAUTH_KEY'
-]
+const ENVIRONMENT_VARS = {
+  COMMENTS_API_URL: 'http://localhost:4040',
+  GOOGLE_API_KEY: '',
+  GOOGLE_OAUTH_KEY: '',
+  FRONT_SOURCE_CODE_URL: 'https://github.com/Nicolas-Oga/personal_site'
+}
 
 const htmlPlugin = filename =>
   new HtmlWebpackPlugin({

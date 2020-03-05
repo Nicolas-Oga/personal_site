@@ -45,7 +45,7 @@ const Footer = _props => {
         Contact
       </Button>
       <Button
-        href='https://github.com/Nicolas-Oga/personal_site'
+        href={process.env.FRONT_SOURCE_CODE_URL}
         target='_blank'
         rel='noopeener noreferrer'
         endIcon={<GitHubIcon />}

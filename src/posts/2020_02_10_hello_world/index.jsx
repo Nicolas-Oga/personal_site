@@ -50,7 +50,7 @@ const Post = _props => (
       React-router is self-explanatory.
       Styled components are the best tool I know to add (real) CSS to React components.
       And I took as many components as I could from Material-UI because I&apos;m lazy (in the good way, I swear!), and they look good.
-      If you are curious, here is the <A href='https://github.com/nicooga/nicooga.github.com'>source code</A>.
+      If you are curious, here is the <A href={process.env.FRONT_SOURCE_CODE_URL}>source code</A>.
       If you decided to reuse the scaffold to build your own site I&apos;d be flattered, but please mention me :), that helps.
     </P>
 
