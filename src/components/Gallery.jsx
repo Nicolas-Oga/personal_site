@@ -9,6 +9,7 @@ import { useGalleryOverlay } from './GalleryOverlay'
 const CustomPanner = styled(Panner)`
   margin: 16px 0;
   padding: 8px;
+  box-sizing: border-box;
   background: linear-gradient(to right, transparent, whitesmoke);
   height: 100px;
 

@@ -10,6 +10,7 @@ const FigureRoot = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  box-sizing: border-box;
   margin-bottom: 16px;
   padding: 8px;
   background-color: whitesmoke;

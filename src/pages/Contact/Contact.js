@@ -63,8 +63,7 @@ const Button = styled(MuiButton)`
 const ContactLinksRoot = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 
   ${breakpoint('mobile')`
     display: inline;
@@ -73,7 +72,7 @@ const ContactLinksRoot = styled.div`
 `
 
 const ContactLinksTitle = styled(Typography).attrs({ variant: 'body1', paragraph: true })`
-  text-align: center;
+  text-align: center !important;
 
   ${breakpoint('desktop')`
     text-align: left;
@@ -89,15 +88,16 @@ const ContactLinkRoot = styled.div`
   }
 `
 
-const ContactLinkDescription = styled.span`
+const ContactLinkDescription = styled.div`
   width: 300px;
   height: 30px;
   display: none;
   opacity: ${props => props.visible ? 1 : 0};
   transition: opacity 500ms;
+  text-align: center !important;
 
   ${breakpoint('mobile')`
-    display: inline;
+    display: block;
   `}
 `
 
@@ -118,7 +118,7 @@ const ContactLinks = _props => {
             <Button
               startIcon={icon}
               onMouseEnter={_ => setCurrentDesc(description)}
-              onMouseLeave={_ => setCurrentDesc(undefined)}
+              onMouseLeave={_ => setDescVisible(null)}
               href={href}
               target='_blank'
             >
@@ -129,7 +129,7 @@ const ContactLinks = _props => {
       )}
 
       <ContactLinkDescription visible={!!currentDesc}>
-        <Typography variant='body1'>
+        <Typography variant='body1' component='span'>
           {currentDesc}
         </Typography>
       </ContactLinkDescription>

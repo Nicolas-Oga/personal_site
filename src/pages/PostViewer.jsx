@@ -17,6 +17,7 @@ const Header = styled.div`
   flex-direction: column;
   border-bottom: 1px solid lightgrey;
   margin-bottom: 24px;
+  box-sizing: border-box;
 
   ${breakpoint('desktop')`
     flex-direction: row;

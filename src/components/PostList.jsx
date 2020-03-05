@@ -78,9 +78,11 @@ const PostList = ({ limit, filters: initialFilters }) => {
   const [filters, setFilters] = useState(initialFilters)
   const { tagsInclude: includedTags, tagsExclude: excludedTags } = filters
 
+  console.log({includedTags})
+
   const sortedPosts = sortBy(posts, p => -p.date.getTime())
   const filteredPosts = sortedPosts.slice(0, limit).filter(p =>
-    (includedTags && p.tags ? includedTags.find(t => p.tags.includes(t)) : true) &&
+    (includedTags ? p.tags && includedTags.find(t => p.tags.includes(t)) : true) &&
     (excludedTags && p.tags ? !excludedTags.find(t => p.tags.includes(t)) : true)
   )
 

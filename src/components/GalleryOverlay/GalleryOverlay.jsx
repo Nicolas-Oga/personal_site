@@ -16,7 +16,7 @@ const STRIP_PADDING = '8px'
 const CYCLE_BUTTON_PADDING = '40px'
 
 const GlobalStyle = createGlobalStyle`
-  body {
+  html, body {
     overflow: hidden;
   }
 `
@@ -26,8 +26,8 @@ const Root = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: black;
   z-index: 1101;
   display: flex;
@@ -52,6 +52,7 @@ const Strip = styled(Panner).attrs({
   width: calc(100% - 16px);
   flex-shrink: 0;
   display: none;
+  box-sizing: border-box;
 
   ${breakpoint('desktop')`
     display: block;
@@ -79,6 +80,7 @@ const BaseButtonWrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  box-sizing: border-box;
 `
 
 const PrevButtonWrapper = styled(BaseButtonWrapper)`
@@ -140,7 +142,7 @@ const GalleryOverlay = ({ images, currentImage: initialCurrentImage }) => {
 
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
       deltaX > 0 ? displayNextImage() : displayPrevImage()
-    } else {
+    } else if (deltaY > window.innerHeight / 12) {
       hideOverlay()
     }
 
