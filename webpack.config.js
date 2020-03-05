@@ -76,7 +76,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: process.env.HOST || '/',
     filename: 'bundle.js'
   },
   devServer: {
