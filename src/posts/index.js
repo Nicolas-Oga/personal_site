@@ -19,6 +19,10 @@ const validate = post => {
     }
   })
 
+  // This validation would be hard to perform at compile time,
+  // because I actually have no compile time aside from webpack build and babel transpile ¯\_(ツ)_/¯.
+  // If Javascript had macros, I could easily implement a compile time validation using one.
+  // Maybe a good excuse to try ClojureScript.
   if (posts.filter(p => p.slug === post.slug).length > 1) {
     throw 'Duplicated slug ' + post.slug // eslint-disable no-throw-literal
   }
