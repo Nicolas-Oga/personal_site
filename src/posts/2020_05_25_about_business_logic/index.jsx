@@ -51,7 +51,7 @@ const Post = _props => {
         </li>
         
         <li>
-          <strong>Controller:</strong> a class or service that handled a particular set of requests to our server.
+          <strong>Controller:</strong> a class or service that handles a particular set of requests to our server.
         </li>
 
         <li>
@@ -112,7 +112,7 @@ const Post = _props => {
       </P>
 
       <Highlight>
-        Business logic and rules are a separate concern that deserve an especial place in our system architecture.
+        Business logic is a separate concern that deserves an especial place in our system architecture.
       </Highlight>
 
       <P>
