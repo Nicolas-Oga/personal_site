@@ -63,7 +63,7 @@ const Post = _props => {
         This pattern feels natural in the development of server-side sites.
         It meant to describe the inner workings of an HTTP server.
         A thin layer that resides at the edge of a larger software contraption.
-        Yet, many of us would end organizing the entire codebase around MVC, which may lead to some problems.
+        Yet, many of us would end organizing the entire codebase around MVC, which lead to some problems.
       </P>
 
       <P>
@@ -74,8 +74,8 @@ const Post = _props => {
       </P>
 
       <P>
-        The problem may have something to do with the name “Models”.
-        It may convey the idea that our system’s business logic model should live in them.
+        The problem has something to do with the name “Models”.
+        It conveys the idea that our system’s business logic model should live in them.
         But models' original purpose was not that.
         It was to validate and store data.
       </P>
@@ -87,7 +87,7 @@ const Post = _props => {
       </P>
 
       <P>
-        If we go back to Wikipedia's definition of business logic, we may begin to notice a few things:
+        If we go back to Wikipedia's definition of business logic, we begin to notice a few things:
       </P>
 
       <ul>
@@ -108,7 +108,7 @@ const Post = _props => {
       </ul>
 
       <P>
-        So we may conclude that business logic never had a place in MVC. Actually:
+        So we can conclude that business logic never had a place in MVC. Actually:
       </P>
 
       <Highlight>
