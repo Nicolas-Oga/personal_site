@@ -8,6 +8,7 @@ import sortBy from 'lodash.sortby'
 
 import Typography from '@material-ui/core/Typography'
 import Chip from '@material-ui/core/Chip'
+import Grid from '@material-ui/core/Grid'
 
 import A from '../components/InlineHyperLink'
 import posts from '../posts'
@@ -110,7 +111,13 @@ const PostList = ({ limit, filters: initialFilters }) => {
               <Typography variant='caption'>{moment(post.date).format(DATE_FORMAT)}</Typography>
               <FlexSpacer />
               <PostLinkTags>
-                {post.tags && post.tags.map((tag, index) => <Chip key={index} label={tag} />)}
+                <Grid container spacing={1} wrap='wrap'>
+                  {post.tags && post.tags.map((tag, index) => (
+                    <Grid item  key={index}>
+                      <Chip label={tag} />
+                    </Grid>
+                  ))}
+                </Grid>
               </PostLinkTags>
             </PostLinkRightSide>
           </PostLink>

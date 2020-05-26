@@ -1,10 +1,11 @@
 import 'regenerator-runtime/runtime'
 import 'normalize.css'
 import 'typeface-roboto'
+import 'highlight.js/styles/atelier-cave-dark.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import breakpoint from 'styled-components-breakpoint'
 import {
   BrowserRouter as Router,
