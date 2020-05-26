@@ -45,15 +45,11 @@ const structuredData = post => JSON.stringify({
     '@type': 'WebPage',
     '@id': `https://nicolasoga.com.ar/posts/${post.slug}`
   },
-  headline: post.title,
+  headline: post.plainTextTitle,
   image: post.cover,
   datePublished: post.date,
   dateModified: post.date,
   author: {
-    '@type': 'Person',
-    name: 'Nicolas Oga'
-  },
-  publisher: {
     '@type': 'Person',
     name: 'Nicolas Oga'
   },
