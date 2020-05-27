@@ -2,7 +2,7 @@ import post1 from './2020_02_10_hello_world'
 import post2 from './2020_02_16_creating_a_gallery_component_in_react'
 import post3 from './2020_05_25_about_business_logic'
 
-const REQUIRED_PROPERTIES = ['title', 'slug', 'date', 'component', 'description']
+const REQUIRED_PROPERTIES = ['title', 'slug', 'date', 'component']
 
 const posts = [
   post1,

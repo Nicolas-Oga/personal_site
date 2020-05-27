@@ -19,97 +19,79 @@ const REFERENCES = {
 const Post = _props => {
   return (
     <Typography variant='body1' component='div'>
-      <PostSectionTitle>
-        What is business logic, exactly
-      </PostSectionTitle>
-
       <P>
-        Quoting <HL external href={REFERENCES.wikipedia}>Wikipedia</HL>:
+        <HL external href={REFERENCES.wikipedia}>Wikipedia</HL> definition of business logic:
       </P>
 
       <Highlight>
-        In computer software, business logic or domain logic is the part of the program that encodes the real-world business rules that determine how data can be created, stored, and changed.
+        ... the part of the program that encodes the real-world business rules that determine how data can be created, stored, and changed.
         <br/>
-        It is contrasted with the remainder of the software that might be concerned with lower-level details of managing a database or displaying the user interface, system infrastructure, or generally connecting various parts of the program.
+        In contrast with the remainder of the software that might be concerned with lower-level details of managing a database or displaying the user interface, system infrastructure, or generally connecting various parts of the program.
       </Highlight>
 
       <PostSectionTitle>
-        A first approach to organizing business logic
+        Traditionnal approach
       </PostSectionTitle>
 
       <P>
-        To date, the Model-View-Controller pattern could be considered the most popular pattern in the web world.
-      </P>
-
-      <P>
-        The parts in MVC generally mean:
+        The Model-View-Controller pattern is the most popular pattern in the web world.
       </P>
 
       <ul>
         <li>
-          <strong>Model:</strong> a class or service that enables interaction with a particular data collection.
+          <strong>Model:</strong> enables interaction with data.
         </li>
         
         <li>
-          <strong>Controller:</strong> a class or service that handles a particular set of requests to our server.
+          <strong>Controller:</strong> handles a particular set of requests.
         </li>
 
         <li>
-          <strong>View:</strong> a template with embedded language expressions, like ERB or Jade (now Pug).
+          <strong>View:</strong> a template with embedded language expressions, like ERB or Jade (Pug).
         </li>
       </ul>
 
       <P>
-        This pattern feels natural in the development of server-side sites.
-        It meant to describe the inner workings of an HTTP server.
-        A thin layer that resides at the edge of a larger software contraption.
-        Yet, many of us would end organizing the entire codebase around MVC, which lead to some problems.
+        This pattern feels natural in the development of server-side sites to implement the inner workings of an HTTP server.
+        Yet, organizing the entire codebase around MVC leads to some problems.
       </P>
 
       <P>
         Two of these problems are fat controllers and fat models.
-        We would realize that these exploded with code that didn’t seem to belong there.
-        Then we would begin to look for ways to refactor that logic away, after the damage was done.
-        Some of that logic may be presentational logic. Some may be business logic.
       </P>
 
       <P>
-        The problem has something to do with the name “Models”.
-        It conveys the idea that our system’s business logic model should live in them.
-        But models' original purpose was not that.
-        It was to validate and store data.
+        “Models” sounds generic enough that it is tempting to place business logic there.
+        But their original purpose was to validate and store data.
       </P>
 
       <P>
-        Further, we live in an era were single page sites and mobile apps are the norm.
-        New approaches to developing HTTP APIs like GraphQL are very popular.
+        Single page applications and technologies like GraphQL are becoming popular.
         In this reality, the "View" and "Controller" in MVC become less and less relevant.
       </P>
 
       <P>
-        If we go back to Wikipedia's definition of business logic, we begin to notice a few things:
+        When compared to Wikipedia's definition of business logic:
       </P>
 
       <ul>
         <li>
-          MVC models are actually low-lovel abstractions that deal with data.
+          MVC models are low-lovel abstractions that deal with data.
           They represent the data that our business logic talks about.
           The do not 'model' our business logic.
         </li>
 
         <li>
-          MVC controller actions are tied to a particular route.
+          MVC controller actions are tied to a particular HTTP route.
           They expose our application to the web.
           But they are not the only gateway to our business logic.
-          We may have a PubSub server, background jobs, and more software pieces that need to access or expose our business logic.
-          It is not a good idea to tie our business logic to controllers.
+          We may have a PubSub server, background jobs, and more software pieces that need to access or expose business logic.
+          It is not a good idea to tie business logic to controllers.
           We need it to be independent.
         </li>
       </ul>
 
-      <P>
-        So we can conclude that business logic never had a place in MVC. Actually:
-      </P>
+      In conclusion:
 
       <Highlight>
         Business logic is a separate concern that deserves an especial place in our system architecture.
@@ -120,15 +102,15 @@ const Post = _props => {
       </P>
 
       <PostSectionTitle>
-        A new pattern: business actions
+        A different pattern: business actions
       </PostSectionTitle>
 
       <P>
-        <HL external href={REFERENCES.trailblazer}>Trailblazer</HL>, <HL external href={REFERENCES.activeinteraction}>ActiveInteraction</HL> and <HL external href={REFERENCES.mutations}>Mutations</HL> are examples of libraries that deal with business logic. I failed to find libraries with a similar aim in the Node world.
+        <HL external href={REFERENCES.trailblazer}>Trailblazer</HL>, <HL external href={REFERENCES.activeinteraction}>ActiveInteraction</HL> and <HL external href={REFERENCES.mutations}>Mutations</HL> are examples of libraries that deal with business logic.
       </P>
 
       <P>
-        If you take a look at these libraries I mentioned you’ll see that all of them have something in common. They implement "business actions" or "business operations". And they revolve around the classic <HL href={REFERENCES.commandObject}>Command Object</HL> pattern.
+        They implement "business actions" or "business operations". And they revolve around the classic <HL href={REFERENCES.commandObject}>Command Object</HL> pattern.
       </P>
 
       <P>
@@ -136,38 +118,34 @@ const Post = _props => {
       </P>
 
       <P>
-        For example, consider a fictional BA called "InviteUserToTeam". For this BA to be performed, we need a performer, a team, and a user email. Here the team and the invited user are parameters for the BA.
+        For example, consider a fictional BA called "InviteUserToTeam". This BA requires a performer, a team, and a user email. Here the team and the invited user are parameters for the BA.
       </P>
 
       <P>
-        Business rules state what are valid values for these parameters. For example, we need the team and the user to exist. Our BA should enforce these validations. It should also provide us with useful error messages to give to the user.
+        Business rules state what are valid values for these parameters. For example, we need the team and the user to exist. Our BA should enforce these validations. It should also provide useful error messages when validations fail.
       </P>
 
       <P>
-        Another recurrent feature of business actions is the "allowance criteria". This is the set of business rules that defines whether our system should allow the performer to perform a given BA. For instance: "only team admins are allowed to invite new members".
+        Another recurrent feature of business actions is the "allowance criteria" or access control. For instance: "only team admins are allowed to invite new members".
       </P>
 
       <P>
-        Finally, it is generally required to provide BA atomicity. This means we rollback changes to data in case of an error. The BA either succeeds or fails, but does not leave the system in an in-between state. This is important in BAs that result in changes to many different collections.
+        BA should also implement atomicity: ability to rollback changes to data in case of an error. The BA either succeeds or fails, but does not leave the system in an in-between state.
       </P>
 
       <P>
-        Wrapping up, these are the base features of BA:
+        Wrapping up, these are the some of the features of a good BA implementation:
       </P>
 
       <ul>
-        <li>it requires a performer</li>
-        <li>it optionally accepts parameters</li>
-        <li>it defines validations for the latter</li>
-        <li>it provides atomicity</li>
+        <li>requires a performer</li>
+        <li>optionally accept parameters</li>
+        <li>defines validations for parameters</li>
+        <li>provides atomicity</li>
       </ul>
 
       <P>
-        This list of features is a generalization. Different business domains may need a different set of features.
-      </P>
-
-      <P>
-        Continuing with the example I proposed, a Javascript implementation of the <code>InviteUserToTeam</code> BA would look like this:
+        Here is a Javascript implementation of the <code>InviteUserToTeam</code> from our example:
       </P>
 
       <CodeSample>
@@ -208,7 +186,8 @@ const Post = _props => {
       </CodeSample>
 
       <P>
-        Notice how we extend <code>BusinessAction</code> here. In this example, this is an abstract class that encapsulates shared behaviour for all BAs.
+        We extend <code>BusinessAction</code> base class here.
+        This is an abstract class that encapsulates shared behaviour for all BAs.
       </P>
 
       <ul>
@@ -220,7 +199,7 @@ const Post = _props => {
 
       <P>Finally, it exposes all this behaviour through the <code>perform()</code> method.</P>
 
-      <P>This is how the BusinessAction abstract class would look like:</P>
+      <P>The BusinessAction abstract class implementation:</P>
 
       <CodeSample>
         {`
@@ -257,13 +236,13 @@ const Post = _props => {
       </CodeSample>
 
       <PostSectionTitle>
-        The benefits
+        Benefits
       </PostSectionTitle>
 
       <P>
-        Business actions provide a designated place for our business logic to live in.
-        They help prevent our business logic from being scattered around our system.
-        They talk declaratively about our business domain.
+        Business actions provide a designated place for business logic to live in.
+        They prevent business logic from scattering around the system.
+        They talk declaratively about business domain.
         All this makes it easier for new developers to understand the system.
       </P>
 
@@ -282,8 +261,8 @@ const Post = _props => {
       </PostSectionTitle>
 
       <P>
-        Our business logic and rules deserve a clear place in our system architecture.
-        The Business Action pattern is a good tool for organizing business logic.
+        Business logic deserves a clear place in our system architecture.
+        The Business Action pattern is a good tool for this purpose.
       </P>
 
       <P>
@@ -296,8 +275,7 @@ const Post = _props => {
 
 const post = {
   date: new Date(2020, 4, 25),
-  title: 'About business logic in data systems',
-  description: 'How to organize it',
+  title: 'How to organize Business Logic in Web Applications',
   component: Post,
   slug: 'about-business-logic-in-data-systems',
   tags: ['software', 'business-logic', 'nodejs', 'ruby', 'rails']
