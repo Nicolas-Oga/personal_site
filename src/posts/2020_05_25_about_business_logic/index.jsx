@@ -208,7 +208,7 @@ const Post = _props => {
 
             constructor(params, performer) {
               this.params = params
-              This.performer = performer
+              this.performer = performer
             }
 
             perform() {
