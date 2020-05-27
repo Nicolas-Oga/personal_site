@@ -212,8 +212,8 @@ const Post = _props => {
             }
 
             perform() {
-              if (!this.isAllowed()) { throw BusinessAction.ForbiddenError }
-              if (!this.isValid()) { throw BusinessAction.InvalidParametersError }
+              if (!this.isAllowed()) { throw new BusinessAction.ForbiddenError() }
+              if (!this.isValid()) { throw new BusinessAction.InvalidParametersError() }
 
               this.transaction = DB.initTransaction()
 
