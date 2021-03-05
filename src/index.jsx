@@ -19,7 +19,7 @@ import AuthProvider from './components/AuthProvider'
 import CommentsApiProvider from './components/CommentsApiProvider'
 
 import Home from './pages/Home'
-import AboutMe from './pages/AboutMe'
+// import AboutMe from './pages/AboutMe'
 import Contact from './pages/Contact'
 import PostViewer from './pages/PostViewer'
 import NotFound from './pages/NotFound'
@@ -75,7 +75,7 @@ const App = _props => (
                 <Body>
                   <Switch>
                     <Route exact path='/' component={Home} />
-                    <Route path='/about-me' component={AboutMe} />
+                    {/* <Route path='/about-me' component={AboutMe} /> */}
                     <Route path='/contact' component={Contact} />
                     {/* I use withRouter to force a re-render on route change */}
                     <Route path='/about-software' render={withRouter(_ => <PostList filters={{ tagsInclude: ['software'] }}/>)} />

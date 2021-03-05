@@ -11,6 +11,6 @@ yarn install
 yarn start
 ~~~
 
-You tweak some settings using environment variables, take a look at `.envrc`.
+Tweak some settings using environment variables, take a look at `.envrc`.
 
 For commenting you'll need my [comments service](https://github.com/Nicolas-Oga/comments_service) running too.
