@@ -24,7 +24,7 @@
     "graphql-tag": "^2.10.3",
     "highlight.js": "^10.0.3",
     "local-storage": "^2.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
